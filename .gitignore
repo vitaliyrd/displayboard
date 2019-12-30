@@ -1,4 +1,4 @@
-# Created by .ignore support plugin (hsz.mobi)
+# Generated
 __pycache__/
 *.py[cod]
 *$py.class
@@ -130,3 +130,7 @@ fabric.properties
 pyvenv.cfg
 .venv
 pip-selfcheck.json
+
+# Custom
+.idea
+media
