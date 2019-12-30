@@ -9,25 +9,24 @@ $(document).ready(() => {
     end: 0
   });
 
-  $(document).keypress((event) => {
-    // Go full screen when 'F' and 'f' are pressed.
-    if (event.which == 70 || event.which == 102) {
-      if (isFullScreen()) {
-        closeFullscreen();
-      } else {
-        openFullscreen();
-      }
+  $(document).click(toggleFullscreen);
+
+  function toggleFullscreen() {
+    if (isFullScreen()) {
+      closeFullscreen();
+    } else {
+      openFullscreen();
     }
-  });
+  }
 
   function closeFullscreen() {
     if (document.exitFullscreen) {
       document.exitFullscreen();
-    } else if (document.mozCancelFullScreen) { /* Firefox */
+    } else if (document.mozCancelFullScreen) {
       document.mozCancelFullScreen();
-    } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+    } else if (document.webkitExitFullscreen) {
       document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) { /* IE/Edge */
+    } else if (document.msExitFullscreen) {
       document.msExitFullscreen();
     }
   }
@@ -37,21 +36,21 @@ $(document).ready(() => {
 
     if (elem.requestFullscreen) {
       elem.requestFullscreen();
-    } else if (elem.mozRequestFullScreen) { /* Firefox */
+    } else if (elem.mozRequestFullScreen) {
       elem.mozRequestFullScreen();
-    } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+    } else if (elem.webkitRequestFullscreen) {
       elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) { /* IE/Edge */
+    } else if (elem.msRequestFullscreen) {
       elem.msRequestFullscreen();
     }
   }
 
   function isFullScreen() {
     return (
-      document.fullscreenElement || /* Standard syntax */
-      document.webkitFullscreenElement || /* Chrome, Safari and Opera syntax */
-      document.mozFullScreenElement ||/* Firefox syntax */
-      document.msFullscreenElement /* IE/Edge syntax */
+      document.fullscreenElement ||
+      document.webkitFullscreenElement ||
+      document.mozFullScreenElement ||
+      document.msFullscreenElement
     );
   }
 });
