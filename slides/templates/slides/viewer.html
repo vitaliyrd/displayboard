@@ -1,0 +1,33 @@
+{% extends "slides/base.html" %}
+
+{% load static %}
+
+{% block title %}Viewer{% endblock %}
+
+{% block styles %}
+{{ block.super }}
+
+<link rel="stylesheet" href="{% static "slides/viewer.css" %}">
+{% endblock %}
+
+{% block content %}
+{{ block.super }}
+
+<div id="slider" data-simple-slider>
+  {% for slide in slides %}
+  <img src="{{ slide.background_image.url }}">
+  {% endfor %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/simple-slider/1.0.0/simpleslider.min.js"></script>
+
+<script type="text/javascript">
+  const SLIDE_DURATION = {{ slideDuration }};
+  const TRANSITION_DURATION = {{ transitionDuration }};
+</script>
+<script type="text/javascript" src="{% static "slides/viewer.js" %}"></script>
+{% endblock %}
