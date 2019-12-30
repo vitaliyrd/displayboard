@@ -4,6 +4,12 @@
 
 {% block title %}Viewer{% endblock %}
 
+{% block meta %}
+{{ block.super }}
+
+<meta http-equiv="refresh" content="{{ refreshDuration }}">
+{% endblock %}
+
 {% block styles %}
 {{ block.super }}
 
